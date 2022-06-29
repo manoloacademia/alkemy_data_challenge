@@ -1,6 +1,8 @@
 """
-Este archivo permite obtener la información de las 3 fuentes (bibliotecas, cines, museos)
-y las guarda en Data Frames de la librería Pandas
+Este archivo permite obtener la información de las 3 fuentes (bibliotecas, cines, museos),
+guardarlas en Data Frames de la librería Pandas y generar los archivos .csv en las carpetas
+corresponientes, con las columnas normalizadas.
+
 """
 
 # Importar librerías
@@ -9,7 +11,11 @@ import requests
 import csv
 import locale
 import datetime
-#from decouple import config
+# import logging as log --> todavía con errores para poder utilizarlo
+# from decouple import config
+
+# Seteo de logging
+# log.basicConfig(handlers=[log.FileHandler('datos_generados.log')], format='%(asctime)s:%(levelname)s:%(message)s')
 
 # Se define lista de conexión de las 3 fuentes en: categoría-url
 LISTA_FUENTES = [
@@ -123,6 +129,11 @@ def generar_csv(categoria: str):
     return csv_to_file
 
 # Se prueban los archivos generados
-generar_csv('museos')
-generar_csv('cines')
-generar_csv('bibliotecas')
+try:
+    generar_csv('museos')
+    generar_csv('cines')
+    generar_csv('bibliotecas')
+    # log.info('Archivos csv generados.')
+except:
+    pass
+    # log.warning('Los archivos ya se encuentran generados.')
