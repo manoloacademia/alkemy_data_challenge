@@ -4,28 +4,10 @@ y las guarda en Data Frames de la librería Pandas
 """
 
 # Importar librerías
-
 import pandas as pd
 import requests
 import csv
-import numpy as np
 #from decouple import config
-
-# Columnas de información normalizadas para las fuentes
-columnas = [
-    'cod_localidad',
-    'id_provincia',
-    'id_departamento',
-    'categoria',
-    'provincia',
-    'localidad',
-    'nombre',
-    'domicilio',
-    'código postal',
-    'número de teléfono',
-    'mail',
-    'web'
-]
 
 # Se define lista de conexión de las 3 fuentes en: categoría-url
 LISTA_FUENTES = [
@@ -45,6 +27,78 @@ for item in LISTA_FUENTES:
     archivos_csv.append(raw_data)
     
 # Definimos los data frames para cada categoría
-df_museo = archivos_csv[0]
+df_museos = archivos_csv[0]
 df_cines = archivos_csv[1]
 df_bibliotecas = archivos_csv[2]
+
+# Revisamos las columnas que tienen los data frames
+# print(df_museos.columns)
+# print(df_cines.columns)
+# print(df_bibliotecas.columns)
+# existen diferencias en las columnas
+
+# Columnas de información normalizadas para las fuentes
+columnas = [
+    'cod_localidad',
+    'id_provincia',
+    'id_departamento',
+    'categoria',
+    'provincia',
+    'localidad',
+    'nombre',
+    'domicilio',
+    'código postal',
+    'número de teléfono',
+    'mail',
+    'web'
+]
+
+# Definir funciones para que extraigan los datos y completen los archivos csv con las columnas finales
+def datos_museos(df_museos: pd.DataFrame):
+    df_museos_csv = pd.DataFrame(columns=columnas)
+    df_museos_csv['cod_localidad'] = df_museos['Cod_Loc']
+    df_museos_csv['id_provincia'] = df_museos['IdProvincia']
+    df_museos_csv['id_departamento'] = df_museos['IdDepartamento']
+    df_museos_csv['categoria'] = df_museos['categoria']
+    df_museos_csv['provincia'] = df_museos['provincia']
+    df_museos_csv['localidad'] = df_museos['localidad']
+    df_museos_csv['nombre'] = df_museos['nombre']
+    df_museos_csv['domicilio'] = df_museos['direccion']
+    df_museos_csv['código postal'] = df_museos['CP']
+    df_museos_csv['número de teléfono'] = df_museos['cod_area'] + df_museos['telefono']
+    df_museos_csv['mail'] = df_museos['Mail']
+    df_museos_csv['web'] = df_museos['Web']
+    return df_museos_csv
+
+def datos_cines(df_cines: pd.DataFrame):
+    df_cines_csv = pd.DataFrame(columns=columnas)
+    df_cines_csv['cod_localidad'] = df_cines['Cod_Loc']
+    df_cines_csv['id_provincia'] = df_cines['IdProvincia']
+    df_cines_csv['id_departamento'] = df_cines['IdDepartamento']
+    df_cines_csv['categoria'] = df_cines['Categoría']
+    df_cines_csv['provincia'] = df_cines['Provincia']
+    df_cines_csv['localidad'] = df_cines['Localidad']
+    df_cines_csv['nombre'] = df_cines['Nombre']
+    df_cines_csv['domicilio'] = df_cines['Dirección']
+    df_cines_csv['código postal'] = df_cines['CP']
+    df_cines_csv['número de teléfono'] = df_cines['cod_area'] + df_cines['Teléfono']
+    df_cines_csv['mail'] = df_cines['Mail']
+    df_cines_csv['web'] = df_cines['Web']
+    return df_cines_csv
+
+def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
+    df_bibliotecas_csv = pd.DataFrame(columns=columnas)
+    df_bibliotecas_csv['cod_localidad'] = df_bibliotecas['Cod_Loc']
+    df_bibliotecas_csv['id_provincia'] = df_bibliotecas['IdProvincia']
+    df_bibliotecas_csv['id_departamento'] = df_bibliotecas['IdDepartamento']
+    df_bibliotecas_csv['categoria'] = df_bibliotecas['Categoría']
+    df_bibliotecas_csv['provincia'] = df_bibliotecas['Provincia']
+    df_bibliotecas_csv['localidad'] = df_bibliotecas['Localidad']
+    df_bibliotecas_csv['nombre'] = df_bibliotecas['Nombre']
+    df_bibliotecas_csv['domicilio'] = df_bibliotecas['Domicilio']
+    df_bibliotecas_csv['código postal'] = df_bibliotecas['CP']
+    df_bibliotecas_csv['número de teléfono'] = df_bibliotecas['Cod_tel'] + df_bibliotecas['Teléfono']
+    df_bibliotecas_csv['mail'] = df_bibliotecas['Mail']
+    df_bibliotecas_csv['web'] = df_bibliotecas['Web']
+    return df_bibliotecas_csv
+
