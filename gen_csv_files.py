@@ -7,6 +7,8 @@ y las guarda en Data Frames de la librería Pandas
 import pandas as pd
 import requests
 import csv
+import locale
+import datetime
 #from decouple import config
 
 # Se define lista de conexión de las 3 fuentes en: categoría-url
@@ -27,9 +29,9 @@ for item in LISTA_FUENTES:
     archivos_csv.append(raw_data)
     
 # Definimos los data frames para cada categoría
-df_museos = archivos_csv[0]
-df_cines = archivos_csv[1]
-df_bibliotecas = archivos_csv[2]
+museos = archivos_csv[0]
+cines = archivos_csv[1]
+bibliotecas = archivos_csv[2]
 
 # Revisamos las columnas que tienen los data frames
 # print(df_museos.columns)
@@ -102,3 +104,25 @@ def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
     df_bibliotecas_csv['web'] = df_bibliotecas['Web']
     return df_bibliotecas_csv
 
+# Generar la constante del mes (en español) en el que estamos
+locale.setlocale(locale.LC_TIME, '')
+ANIO_MES = datetime.date.today().strftime('%Y-%B')
+
+# Generar la constante del día en el que realizamos la descarga
+FECHA_DESCARGA = datetime.date.today().strftime('%d-%m-%Y')
+
+# Se generan los archivos .csv en las carpetas correspondientes desde los data frames de datos
+def generar_csv(categoria: str):
+    if categoria == 'museos':
+        df = datos_museos(museos)
+    if categoria == 'cines':
+        df = datos_cines(cines)
+    if categoria == 'bibliotecas':
+        df = datos_bibliotecas(bibliotecas)
+    csv_to_file = df.to_csv(f'data\{categoria}\{ANIO_MES}\{categoria}-{FECHA_DESCARGA}.csv')
+    return csv_to_file
+
+# Se prueban los archivos generados
+generar_csv('museos')
+generar_csv('cines')
+generar_csv('bibliotecas')
