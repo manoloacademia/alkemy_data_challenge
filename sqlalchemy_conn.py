@@ -16,12 +16,28 @@ def get_engine(user, passwd, host, port, db):
     engine = create_engine(url, pool_size=50, echo=False)
     return engine
 
-engine = get_engine(settings['pguser'],
+# Se prueba para ver si está creado
+# print(engine.url) --> arroja un resultado correcto
+
+# Se crea una función que tome todos los parámetros de settings y cree en engine para meterla dentro de la creación de la sesión
+def get_engine_from_settings():
+    keys = ['pguser', 'pgpasswd', 'pghost', 'pgport', 'pgdb']
+    if not all(key in keys for key in settings.keys()):
+        raise Exception('Corregir archivo de configuración.')
+    
+    return get_engine(settings['pguser'],
                     settings['pgpasswd'],
                     settings['pghost'],
                     settings['pgport'],
-                    settings['pgdb'],
-)
+                    settings['pgdb'])
 
-# Se prueba para ver si está creado
-# print(engine.url) --> arroja un resultado correcto
+# Se crea sesión
+def get_session():
+    engine = get_engine_from_settings()
+    session = sessionmaker(bind=engine) ()
+    return session
+
+session = get_session()
+
+# Se prueba para corroborar si funciona la sesión
+# print(session) --> funciona correctamente
