@@ -19,7 +19,7 @@ def get_engine(user, passwd, host, port, db):
 # Se prueba para ver si está creado
 # print(engine.url) --> arroja un resultado correcto
 
-# Se crea una función que tome todos los parámetros de settings y cree en engine para meterla dentro de la creación de la sesión
+# Se crea una función que tome todos los parámetros de settings y cree en engine para la sesión
 def get_engine_from_settings():
     keys = ['pguser', 'pgpasswd', 'pghost', 'pgport', 'pgdb']
     if not all(key in keys for key in settings.keys()):
