@@ -27,19 +27,29 @@ LISTA_FUENTES = [
 ]
 
 # Realizamos una lista en la cual se cargan los dataframes desde los .csv web
-archivos_csv = []
-for item in LISTA_FUENTES:
-    r = requests.get(item['url'])
-    download = r.content.decode('utf-8')
-    csv_file = csv.reader(download.splitlines(), delimiter=',')
-    csv_creator = list(csv_file)
-    raw_data = pd.DataFrame(csv_creator[1:], columns=csv_creator[0])
-    archivos_csv.append(raw_data)
-    
+
+def csv_datos_fuente():
+    """
+    Esta función genera una lista con los archivos correspondientes
+    a las fuentes:
+        - Museos: index = 0
+        - Cines: index = 1
+        - Bibliotecas: index = 2
+    """
+    archivos_csv = []
+    for item in LISTA_FUENTES:
+        r = requests.get(item['url'])
+        download = r.content.decode('utf-8')
+        csv_file = csv.reader(download.splitlines(), delimiter=',')
+        csv_creator = list(csv_file)
+        raw_data = pd.DataFrame(csv_creator[1:], columns=csv_creator[0])
+        archivos_csv.append(raw_data)
+    return archivos_csv
+
 # Definimos los data frames para cada categoría
-museos = archivos_csv[0]
-cines = archivos_csv[1]
-bibliotecas = archivos_csv[2]
+museos = csv_datos_fuente()[0]
+cines = csv_datos_fuente()[1]
+bibliotecas = csv_datos_fuente()[2]
 
 # Revisamos las columnas que tienen los data frames
 # print(df_museos.columns)
@@ -65,6 +75,10 @@ columnas = [
 
 # Definir funciones para que extraigan los datos y completen los archivos csv con las columnas finales
 def datos_museos(df_museos: pd.DataFrame):
+    """
+    Esta funcion recibe como parámetro el data frame de datos-fuente
+    de museos y genera un data frame con los datos normalizados.
+    """
     df_museos_csv = pd.DataFrame(columns=columnas)
     df_museos_csv['cod_localidad'] = df_museos['Cod_Loc']
     df_museos_csv['id_provincia'] = df_museos['IdProvincia']
@@ -82,6 +96,10 @@ def datos_museos(df_museos: pd.DataFrame):
     return df_museos_csv
 
 def datos_cines(df_cines: pd.DataFrame):
+    """
+    Esta funcion recibe como parámetro el data frame de datos-fuente
+    de cines y genera un data frame con los datos normalizados.
+    """
     df_cines_csv = pd.DataFrame(columns=columnas)
     df_cines_csv['cod_localidad'] = df_cines['Cod_Loc']
     df_cines_csv['id_provincia'] = df_cines['IdProvincia']
@@ -99,6 +117,10 @@ def datos_cines(df_cines: pd.DataFrame):
     return df_cines_csv
 
 def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
+    """
+    Esta funcion recibe como parámetro el data frame de datos-fuente
+    de bibliotecas y genera un data frame con los datos normalizados.
+    """
     df_bibliotecas_csv = pd.DataFrame(columns=columnas)
     df_bibliotecas_csv['cod_localidad'] = df_bibliotecas['Cod_Loc']
     df_bibliotecas_csv['id_provincia'] = df_bibliotecas['IdProvincia']
@@ -124,11 +146,13 @@ FECHA_DESCARGA = datetime.date.today().strftime('%d-%m-%Y')
 
 # Definir el directorio base para hacer la generación
 BASE_DIR = Path(os.path.abspath(os.path.dirname(__file__))).absolute()
-print(BASE_DIR)
-
 
 # Se generan los archivos .csv en las carpetas correspondientes desde los data frames de datos
 def generar_csv(categoria: str):
+    """
+    Esta función recibe como parámetro la categoría de los datos-fuente
+    y devuelve un archivo .csv con la información normalizada.
+    """
     if categoria == 'museos':
         df = datos_museos(museos)
     if categoria == 'cines':

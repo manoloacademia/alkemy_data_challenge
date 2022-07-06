@@ -44,6 +44,9 @@ def crear_directorios(categoria:str):
         os.mkdir(path_nuevo)
         logging.info("Se crean solamente los directorios de mes y año ya que los de categoría existen.")
 
+# Crear directorio data
+os.mkdir('data')
+
 try: 
     categorias = ['cines', 'bibliotecas', 'museos']
     for categoria in categorias:

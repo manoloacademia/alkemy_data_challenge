@@ -41,3 +41,108 @@
 2022-07-06 12:22:16,672:INFO:Se crea dataframe de bibliotecas.
 2022-07-06 12:22:16,705:INFO:Se crea archivo .csv normalizado.
 2022-07-06 12:22:16,705:INFO:Archivos csv generados correctamente.
+2022-07-06 13:24:18,528:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:24,189:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:24:24,567:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:26,007:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:24:26,247:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:27,677:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 13:24:28,145:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:29,616:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:24:29,934:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:31,379:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:24:31,561:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:33,004:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 511527
+2022-07-06 13:24:33,641:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:34,567:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:24:34,901:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:36,379:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:24:36,635:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:24:37,614:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 511527
+2022-07-06 13:24:39,958:INFO:Se crea dataframe de museos.
+2022-07-06 13:24:39,984:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:24:39,989:INFO:Se crea dataframe de cines.
+2022-07-06 13:24:39,997:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:24:40,003:INFO:Se crea dataframe de bibliotecas.
+2022-07-06 13:24:40,026:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:24:40,027:INFO:Archivos csv generados correctamente.
+2022-07-06 13:25:57,644:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 13:25:57,646:WARNING:Los directorios ya se encuentran creados. El detalle de la excepcion es: [WinError 183] No se puede crear un archivo que ya existe: 'data'
+2022-07-06 13:26:03,905:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:05,356:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:26:05,719:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:07,193:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:26:07,404:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:08,822:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 511527
+2022-07-06 13:26:09,270:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:10,286:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 None
+2022-07-06 13:26:10,620:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:12,067:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:26:12,252:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:13,700:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 13:26:14,148:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:15,579:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:26:15,889:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:16,815:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 None
+2022-07-06 13:26:16,994:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:26:18,459:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 13:26:18,955:INFO:Se crea dataframe de museos.
+2022-07-06 13:26:18,958:WARNING:Los archivos ya se encuentran generados.
+2022-07-06 13:27:15,440:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 13:27:15,443:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 13:27:15,448:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 13:27:15,448:INFO:Directorios generados.
+2022-07-06 13:28:08,274:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:09,772:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 None
+2022-07-06 13:28:10,083:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:11,523:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:28:11,711:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:13,149:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 13:28:13,597:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:15,058:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:28:15,379:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:16,811:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:28:17,002:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:18,453:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 511527
+2022-07-06 13:28:18,973:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:19,910:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:28:20,209:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:21,695:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:28:21,891:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:28:22,832:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 13:28:23,286:INFO:Se crea dataframe de museos.
+2022-07-06 13:28:23,304:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:28:23,309:INFO:Se crea dataframe de cines.
+2022-07-06 13:28:23,315:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:28:23,322:INFO:Se crea dataframe de bibliotecas.
+2022-07-06 13:28:23,347:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:28:23,347:INFO:Archivos csv generados correctamente.
+2022-07-06 13:30:39,801:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 13:30:39,804:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 13:30:39,807:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 13:30:39,808:INFO:Directorios generados.
+2022-07-06 13:30:51,447:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:30:53,279:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 13:30:53,651:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:30:55,153:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:30:55,333:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:30:56,776:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 511527
+2022-07-06 13:30:57,261:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:30:58,112:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 None
+2022-07-06 13:30:58,520:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:30:59,527:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:30:59,708:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:31:01,262:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 13:31:01,767:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:31:02,781:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 None
+2022-07-06 13:31:03,209:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:31:04,692:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 13:31:04,870:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 13:31:06,362:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 511527
+2022-07-06 13:31:06,849:INFO:Se crea dataframe de museos.
+2022-07-06 13:31:06,867:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:31:06,871:INFO:Se crea dataframe de cines.
+2022-07-06 13:31:06,878:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:31:06,887:INFO:Se crea dataframe de bibliotecas.
+2022-07-06 13:31:06,910:INFO:Se crea archivo .csv normalizado.
+2022-07-06 13:31:06,911:INFO:Archivos csv generados correctamente.
