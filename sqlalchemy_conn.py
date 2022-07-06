@@ -1,5 +1,4 @@
-"""
-SQL Alchemy is a DB wrapper
+""" SQL Alchemy is a DB wrapper
 1- We need to create an engine
 2- We need to create a session
 """

@@ -1,5 +1,4 @@
-"""
-Este archivo permite obtener la información de las 3 fuentes (bibliotecas, cines, museos),
+""" Este archivo permite obtener la información de las 3 fuentes (bibliotecas, cines, museos),
 guardarlas en Data Frames de la librería Pandas y generar los archivos .csv en las carpetas
 corresponientes, con las columnas normalizadas.
 
@@ -25,38 +24,6 @@ LISTA_FUENTES = [
     {'categoria': 'cines', 'url': 'https://datos.cultura.gob.ar/dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv'},
     {'categoria': 'bibliotecas', 'url': 'https://datos.cultura.gob.ar/dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv'}
 ]
-
-# Realizamos una lista en la cual se cargan los dataframes desde los .csv web
-
-def csv_datos_fuente():
-    """
-    Esta función genera una lista con los archivos correspondientes
-    a las fuentes:
-        - Museos: index = 0
-        - Cines: index = 1
-        - Bibliotecas: index = 2
-    """
-    archivos_csv = []
-    for item in LISTA_FUENTES:
-        r = requests.get(item['url'])
-        download = r.content.decode('utf-8')
-        csv_file = csv.reader(download.splitlines(), delimiter=',')
-        csv_creator = list(csv_file)
-        raw_data = pd.DataFrame(csv_creator[1:], columns=csv_creator[0])
-        archivos_csv.append(raw_data)
-    return archivos_csv
-
-# Definimos los data frames para cada categoría
-museos = csv_datos_fuente()[0]
-cines = csv_datos_fuente()[1]
-bibliotecas = csv_datos_fuente()[2]
-
-# Revisamos las columnas que tienen los data frames
-# print(df_museos.columns)
-# print(df_cines.columns)
-# print(df_bibliotecas.columns)
-# existen diferencias en las columnas
-
 # Columnas de información normalizadas para las fuentes
 columnas = [
     'cod_localidad',
@@ -73,10 +40,37 @@ columnas = [
     'web'
 ]
 
+# Generar la constante del mes (en español) en el que estamos
+locale.setlocale(locale.LC_TIME, '')
+ANIO_MES = datetime.date.today().strftime('%Y-%B')
+
+# Generar la constante del día en el que realizamos la descarga
+FECHA_DESCARGA = datetime.date.today().strftime('%d-%m-%Y')
+
+# Definir el directorio base para hacer la generación
+BASE_DIR = Path(os.path.abspath(os.path.dirname(__file__))).absolute()
+
+# Realizamos una lista en la cual se cargan los dataframes desde los .csv web
+def csv_datos_fuente():
+    """ Esta función genera una lista con los archivos correspondientes
+    a las fuentes:
+        - Museos: index = 0
+        - Cines: index = 1
+        - Bibliotecas: index = 2
+    """
+    archivos_csv = []
+    for item in LISTA_FUENTES:
+        r = requests.get(item['url'])
+        download = r.content.decode('utf-8')
+        csv_file = csv.reader(download.splitlines(), delimiter=',')
+        csv_creator = list(csv_file)
+        raw_data = pd.DataFrame(csv_creator[1:], columns=csv_creator[0])
+        archivos_csv.append(raw_data)
+    return archivos_csv
+
 # Definir funciones para que extraigan los datos y completen los archivos csv con las columnas finales
 def datos_museos(df_museos: pd.DataFrame):
-    """
-    Esta funcion recibe como parámetro el data frame de datos-fuente
+    """ Esta funcion recibe como parámetro el data frame de datos-fuente
     de museos y genera un data frame con los datos normalizados.
     """
     df_museos_csv = pd.DataFrame(columns=columnas)
@@ -96,8 +90,7 @@ def datos_museos(df_museos: pd.DataFrame):
     return df_museos_csv
 
 def datos_cines(df_cines: pd.DataFrame):
-    """
-    Esta funcion recibe como parámetro el data frame de datos-fuente
+    """ Esta funcion recibe como parámetro el data frame de datos-fuente
     de cines y genera un data frame con los datos normalizados.
     """
     df_cines_csv = pd.DataFrame(columns=columnas)
@@ -117,8 +110,7 @@ def datos_cines(df_cines: pd.DataFrame):
     return df_cines_csv
 
 def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
-    """
-    Esta funcion recibe como parámetro el data frame de datos-fuente
+    """ Esta funcion recibe como parámetro el data frame de datos-fuente
     de bibliotecas y genera un data frame con los datos normalizados.
     """
     df_bibliotecas_csv = pd.DataFrame(columns=columnas)
@@ -137,20 +129,9 @@ def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
     logging.info("Se crea dataframe de bibliotecas.")
     return df_bibliotecas_csv
 
-# Generar la constante del mes (en español) en el que estamos
-locale.setlocale(locale.LC_TIME, '')
-ANIO_MES = datetime.date.today().strftime('%Y-%B')
-
-# Generar la constante del día en el que realizamos la descarga
-FECHA_DESCARGA = datetime.date.today().strftime('%d-%m-%Y')
-
-# Definir el directorio base para hacer la generación
-BASE_DIR = Path(os.path.abspath(os.path.dirname(__file__))).absolute()
-
 # Se generan los archivos .csv en las carpetas correspondientes desde los data frames de datos
 def generar_csv(categoria: str):
-    """
-    Esta función recibe como parámetro la categoría de los datos-fuente
+    """ Esta función recibe como parámetro la categoría de los datos-fuente
     y devuelve un archivo .csv con la información normalizada.
     """
     if categoria == 'museos':
@@ -167,11 +148,18 @@ def generar_csv(categoria: str):
     logging.info("Se crea archivo .csv normalizado.")
     return csv_to_file
 
-# Se prueban los archivos generados
-try:
-    generar_csv('museos')
-    generar_csv('cines')
-    generar_csv('bibliotecas')
-    logging.info('Archivos csv generados correctamente.')
-except:
-    logging.warning('Los archivos ya se encuentran generados.')
+if __name__ == '__main__':
+    
+    # Definimos los data frames para cada categoría
+    museos = csv_datos_fuente()[0]
+    cines = csv_datos_fuente()[1]
+    bibliotecas = csv_datos_fuente()[2]
+    
+    # Se prueban los archivos generados
+    try:
+        generar_csv('museos')
+        generar_csv('cines')
+        generar_csv('bibliotecas')
+        logging.info('Archivos csv generados correctamente.')
+    except:
+        logging.warning('Los archivos ya se encuentran generados.')

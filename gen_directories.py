@@ -1,5 +1,4 @@
-"""
-En este archivo, se creará la función que permita crear los directorios.
+""" En este archivo, se creará la función que permita crear los directorios.
 El detalle de los directorios es: "categoría\año-mes\"
 Si el archivo ya existe, debe reemplazarse.
 Quedarán guardados en la carpeta "Data" del proyecto.
@@ -26,8 +25,7 @@ BASE_DIR = Path(os.path.abspath(os.path.dirname(__file__))).absolute()
 
 # Definir la función de generación de los directorios
 def crear_directorios(categoria:str):
-    """
-    Esta función, realiza la creación de los directorios en donde se 
+    """ Esta función, realiza la creación de los directorios en donde se 
     guardarán los archivos del análisis de los datos.
     """
     try:
@@ -44,15 +42,15 @@ def crear_directorios(categoria:str):
         os.mkdir(path_nuevo)
         logging.info("Se crean solamente los directorios de mes y año ya que los de categoría existen.")
 
-# Crear directorio data
-os.mkdir('data')
+if __name__ == '__main__':
+    # Crear directorio data
+    os.mkdir('data')
+    logging.info("Se crea directorio data.")
 
-try: 
-    categorias = ['cines', 'bibliotecas', 'museos']
-    for categoria in categorias:
-        crear_directorios(categoria)
-    logging.info("Directorios generados.")
-except Exception as e:
-    logging.warning(f'Los directorios ya se encuentran creados. El detalle de la excepcion es: {e}')
-
-
+    try: 
+        categorias = ['cines', 'bibliotecas', 'museos']
+        for categoria in categorias:
+            crear_directorios(categoria)
+        logging.info("Directorios generados.")
+    except Exception as e:
+        logging.warning(f'Los directorios ya se encuentran creados. El detalle de la excepcion es: {e}')
