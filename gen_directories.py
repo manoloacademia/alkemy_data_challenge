@@ -31,14 +31,15 @@ def crear_directorios(categoria:str):
     guardarán los archivos del análisis de los datos.
     """
     try:
-        dir_cat = fr'data\{categoria}'
-        os.mkdir(os.path.join(BASE_DIR, dir_cat))
-        dir_fecha = fr'data\{categoria}\{ANIO_MES}'
+        dir_cat = os.path.join('data', categoria)
+        dir_cat = os.path.join(BASE_DIR, dir_cat) 
+        os.mkdir(dir_cat)
+        dir_fecha = os.path.join(dir_cat, f'{ANIO_MES}')
         path_nuevo = os.path.join(BASE_DIR, dir_fecha)
         os.mkdir(path_nuevo)
         logging.info("Se crean los directorios de categorías y los específicos al mes y año.")
     except:
-        dir_fecha = fr'data\{categoria}\{ANIO_MES}'
+        dir_fecha = os.path.join(dir_cat, f'{ANIO_MES}')
         path_nuevo = os.path.join(BASE_DIR, dir_fecha)
         os.mkdir(path_nuevo)
         logging.info("Se crean solamente los directorios de mes y año ya que los de categoría existen.")

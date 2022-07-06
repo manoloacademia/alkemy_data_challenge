@@ -24,3 +24,20 @@
 2022-07-06 11:39:09,219:INFO:Se crea dataframe de bibliotecas.
 2022-07-06 11:39:09,235:INFO:Se crea archivo .csv normalizado.
 2022-07-06 11:39:09,235:INFO:Archivos csv generados correctamente.
+2022-07-06 12:15:40,258:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 12:15:40,258:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 12:15:40,273:INFO:Se crean los directorios de categorías y los específicos al mes y año.
+2022-07-06 12:15:40,273:INFO:Directorios generados.
+2022-07-06 12:22:11,145:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 12:22:12,842:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 12:22:13,143:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 12:22:14,566:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 None
+2022-07-06 12:22:14,731:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 12:22:16,166:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 12:22:16,623:INFO:Se crea dataframe de museos.
+2022-07-06 12:22:16,649:INFO:Se crea archivo .csv normalizado.
+2022-07-06 12:22:16,655:INFO:Se crea dataframe de cines.
+2022-07-06 12:22:16,665:INFO:Se crea archivo .csv normalizado.
+2022-07-06 12:22:16,672:INFO:Se crea dataframe de bibliotecas.
+2022-07-06 12:22:16,705:INFO:Se crea archivo .csv normalizado.
+2022-07-06 12:22:16,705:INFO:Archivos csv generados correctamente.

@@ -12,6 +12,8 @@ import csv
 import locale
 import datetime
 import logging
+import os
+from pathlib import Path
 # from decouple import config
 
 # Seteo de logging
@@ -120,6 +122,11 @@ ANIO_MES = datetime.date.today().strftime('%Y-%B')
 # Generar la constante del día en el que realizamos la descarga
 FECHA_DESCARGA = datetime.date.today().strftime('%d-%m-%Y')
 
+# Definir el directorio base para hacer la generación
+BASE_DIR = Path(os.path.abspath(os.path.dirname(__file__))).absolute()
+print(BASE_DIR)
+
+
 # Se generan los archivos .csv en las carpetas correspondientes desde los data frames de datos
 def generar_csv(categoria: str):
     if categoria == 'museos':
@@ -128,7 +135,11 @@ def generar_csv(categoria: str):
         df = datos_cines(cines)
     if categoria == 'bibliotecas':
         df = datos_bibliotecas(bibliotecas)
-    csv_to_file = df.to_csv(f'data\{categoria}\{ANIO_MES}\{categoria}-{FECHA_DESCARGA}.csv')
+    dir_cat = os.path.join('data', categoria)
+    dir_cat = os.path.join(BASE_DIR, dir_cat)
+    dir_fecha = os.path.join(dir_cat, f'{ANIO_MES}')
+    dir_cat_mes_anio = os.path.join(dir_fecha,f'{categoria}-{FECHA_DESCARGA}.csv')
+    csv_to_file = df.to_csv(dir_cat_mes_anio)
     logging.info("Se crea archivo .csv normalizado.")
     return csv_to_file
 
