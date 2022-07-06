@@ -11,11 +11,11 @@ import requests
 import csv
 import locale
 import datetime
-# import logging as log --> todavía con errores para poder utilizarlo
+import logging
 # from decouple import config
 
 # Seteo de logging
-# log.basicConfig(handlers=[log.FileHandler('datos_generados.log')], format='%(asctime)s:%(levelname)s:%(message)s')
+logging.basicConfig(level=logging.DEBUG, filename='datos_generados.log', filemode='a', format='%(asctime)s:%(levelname)s:%(message)s')
 
 # Se define lista de conexión de las 3 fuentes en: categoría-url
 LISTA_FUENTES = [
@@ -76,6 +76,7 @@ def datos_museos(df_museos: pd.DataFrame):
     df_museos_csv['número de teléfono'] = df_museos['cod_area'] + df_museos['telefono']
     df_museos_csv['mail'] = df_museos['Mail']
     df_museos_csv['web'] = df_museos['Web']
+    logging.info("Se crea dataframe de museos.")
     return df_museos_csv
 
 def datos_cines(df_cines: pd.DataFrame):
@@ -92,6 +93,7 @@ def datos_cines(df_cines: pd.DataFrame):
     df_cines_csv['número de teléfono'] = df_cines['cod_area'] + df_cines['Teléfono']
     df_cines_csv['mail'] = df_cines['Mail']
     df_cines_csv['web'] = df_cines['Web']
+    logging.info("Se crea dataframe de cines.")
     return df_cines_csv
 
 def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
@@ -108,6 +110,7 @@ def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
     df_bibliotecas_csv['número de teléfono'] = df_bibliotecas['Cod_tel'] + df_bibliotecas['Teléfono']
     df_bibliotecas_csv['mail'] = df_bibliotecas['Mail']
     df_bibliotecas_csv['web'] = df_bibliotecas['Web']
+    logging.info("Se crea dataframe de bibliotecas.")
     return df_bibliotecas_csv
 
 # Generar la constante del mes (en español) en el que estamos
@@ -126,6 +129,7 @@ def generar_csv(categoria: str):
     if categoria == 'bibliotecas':
         df = datos_bibliotecas(bibliotecas)
     csv_to_file = df.to_csv(f'data\{categoria}\{ANIO_MES}\{categoria}-{FECHA_DESCARGA}.csv')
+    logging.info("Se crea archivo .csv normalizado.")
     return csv_to_file
 
 # Se prueban los archivos generados
@@ -133,7 +137,6 @@ try:
     generar_csv('museos')
     generar_csv('cines')
     generar_csv('bibliotecas')
-    # log.info('Archivos csv generados.')
+    logging.info('Archivos csv generados correctamente.')
 except:
-    pass
-    # log.warning('Los archivos ya se encuentran generados.')
+    logging.warning('Los archivos ya se encuentran generados.')

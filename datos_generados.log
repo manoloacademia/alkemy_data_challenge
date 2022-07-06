@@ -1,0 +1,26 @@
+2022-07-06 11:30:39,756:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 11:30:41,561:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 11:30:41,915:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 11:30:43,364:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 96427
+2022-07-06 11:30:43,549:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 11:30:45,004:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 None
+2022-07-06 11:30:45,554:INFO:Se crea dataframe de museos.
+2022-07-06 11:30:45,569:WARNING:Los archivos ya se encuentran generados.
+2022-07-06 11:35:27,384:WARNING:Los directorios ya se encuentran creados. El detalle de la excepcion es: [WinError 183] No se puede crear un archivo que ya existe: 'c:\\Users\\segovp01\\OneDrive - Johnson Matthey\\7 - Archivos sueltos\\Python\\alkemy-challenge\\data\\cines'
+2022-07-06 11:38:35,720:INFO:Se crean solamente los directorios de mes y año ya que los de categoría existen.
+2022-07-06 11:38:35,736:INFO:Se crean solamente los directorios de mes y año ya que los de categoría existen.
+2022-07-06 11:38:35,736:INFO:Se crean solamente los directorios de mes y año ya que los de categoría existen.
+2022-07-06 11:38:35,736:INFO:Directorios generados.
+2022-07-06 11:39:03,384:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 11:39:05,225:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/4207def0-2ff7-41d5-9095-d42ae8207a5d/download/museos_datosabiertos.csv HTTP/1.1" 200 304431
+2022-07-06 11:39:05,626:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 11:39:07,082:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv HTTP/1.1" 200 None
+2022-07-06 11:39:07,292:DEBUG:Starting new HTTPS connection (1): datos.cultura.gob.ar:443
+2022-07-06 11:39:08,718:DEBUG:https://datos.cultura.gob.ar:443 "GET /dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/01c6c048-dbeb-44e0-8efa-6944f73715d7/download/biblioteca_popular.csv HTTP/1.1" 200 511527
+2022-07-06 11:39:09,183:INFO:Se crea dataframe de museos.
+2022-07-06 11:39:09,198:INFO:Se crea archivo .csv normalizado.
+2022-07-06 11:39:09,214:INFO:Se crea dataframe de cines.
+2022-07-06 11:39:09,219:INFO:Se crea archivo .csv normalizado.
+2022-07-06 11:39:09,219:INFO:Se crea dataframe de bibliotecas.
+2022-07-06 11:39:09,235:INFO:Se crea archivo .csv normalizado.
+2022-07-06 11:39:09,235:INFO:Archivos csv generados correctamente.

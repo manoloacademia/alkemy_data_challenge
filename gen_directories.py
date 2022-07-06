@@ -9,6 +9,10 @@ import os
 from pathlib import Path
 import datetime
 import locale
+import logging
+
+# Seteo de logging
+logging.basicConfig(level=logging.DEBUG, filename='datos_generados.log', filemode='a', format='%(asctime)s:%(levelname)s:%(message)s')
 
 # Generar la constante del mes (en español) en el que estamos
 locale.setlocale(locale.LC_TIME, '')
@@ -26,14 +30,25 @@ def crear_directorios(categoria:str):
     Esta función, realiza la creación de los directorios en donde se 
     guardarán los archivos del análisis de los datos.
     """
-    dir_cat = fr'data\{categoria}'
-    os.mkdir(os.path.join(BASE_DIR, dir_cat))
-    dir_fecha = fr'data\{categoria}\{ANIO_MES}'
-    path_nuevo = os.path.join(BASE_DIR, dir_fecha)
-    os.mkdir(path_nuevo)
+    try:
+        dir_cat = fr'data\{categoria}'
+        os.mkdir(os.path.join(BASE_DIR, dir_cat))
+        dir_fecha = fr'data\{categoria}\{ANIO_MES}'
+        path_nuevo = os.path.join(BASE_DIR, dir_fecha)
+        os.mkdir(path_nuevo)
+        logging.info("Se crean los directorios de categorías y los específicos al mes y año.")
+    except:
+        dir_fecha = fr'data\{categoria}\{ANIO_MES}'
+        path_nuevo = os.path.join(BASE_DIR, dir_fecha)
+        os.mkdir(path_nuevo)
+        logging.info("Se crean solamente los directorios de mes y año ya que los de categoría existen.")
 
-categorias = ['cines', 'bibliotecas', 'museos']
-for categoria in categorias:
-    crear_directorios(categoria)
+try: 
+    categorias = ['cines', 'bibliotecas', 'museos']
+    for categoria in categorias:
+        crear_directorios(categoria)
+    logging.info("Directorios generados.")
+except Exception as e:
+    logging.warning(f'Los directorios ya se encuentran creados. El detalle de la excepcion es: {e}')
 
 
