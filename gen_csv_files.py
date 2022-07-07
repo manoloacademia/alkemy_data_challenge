@@ -163,3 +163,8 @@ if __name__ == '__main__':
         logging.info('Archivos csv generados correctamente.')
     except:
         logging.warning('Los archivos ya se encuentran generados.')
+
+    # Generación de tabla de datos generales
+    tabla_general = pd.concat([museos, cines, bibliotecas], axis=0, ignore_index=True)
+    # tabla_general = tabla_general.drop('Unnamed: 0', axis=1)
+    tabla_general.to_csv('tabla_general.csv')

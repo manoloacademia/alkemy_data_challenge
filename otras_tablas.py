@@ -1,17 +1,58 @@
 import pandas as pd
 import numpy as np
-import requests
-import csv
+import locale
+import datetime
+from pathlib import Path
+import os
+
+# Generar la constante del mes (en español) en el que estamos
+locale.setlocale(locale.LC_TIME, '')
+ANIO_MES = datetime.date.today().strftime('%Y-%B')
+
+# Generar la constante del día en el que realizamos la descarga
+FECHA_DESCARGA = datetime.date.today().strftime('%d-%m-%Y')
+
+# Definir el directorio base para hacer la generación
+BASE_DIR = Path(os.path.abspath(os.path.dirname(__file__))).absolute()
 
 # Archivos .csv de datos generales procesados
-cines = pd.read_csv('data/cines/2022-junio/cines-29-06-2022.csv')
-museos = pd.read_csv('data/museos/2022-junio/museos-29-06-2022.csv')
-bibliotecas = pd.read_csv('data/bibliotecas/2022-junio/bibliotecas-29-06-2022.csv')
+def datos_fuentes():
+    """ Esta función toma los archivos de datos-fuente bajados y los 
+    devuelve en data frames.    
+    """
+    archivos_dato_fuente = []
+    for categoria in ['museos', 'cines', 'bibliotecas']:
+        dir_cat = os.path.join(BASE_DIR,'data')
+        dir_cat = os.path.join(dir_cat,f'{categoria}')
+        dir_fecha = os.path.join(dir_cat,f'{ANIO_MES}')
+        dir_file = os.path.join(dir_fecha,f'{categoria}-{FECHA_DESCARGA}')
+        dato_fuente_cat = pd.read_csv(dir_file)
+        archivos_dato_fuente.append(dato_fuente_cat)
+    museos = archivos_dato_fuente[0]
+    cines = archivos_dato_fuente[1]
+    bibliotecas = archivos_dato_fuente[2]
+    return museos, cines, bibliotecas
+        
+museos, cines, bibliotecas = datos_fuentes()
 
-# Generación de tabla de datos generales
-tabla_general = pd.concat([cines, museos, bibliotecas], axis=0, ignore_index=True)
-tabla_general = tabla_general.drop('Unnamed: 0', axis=1)
-tabla_general.to_csv('tabla_general.csv')
+# Modificación de valores de columnas para poder acumular en la tabla de datos generales para cines
+def analisis_datos_cines(cines: pd.DataFrame):
+    """ Esta función permite realizar la tabla de análisis de cines así como el 
+    recuento de las butacas, pantallas y los espacios INCAA.
+    """
+    raw_data = pd.DataFrame()
+    raw_data['Pantallas'] = cines['Pantallas'].astype(int)
+    raw_data['Butacas'] = cines['Butacas'].astype(int)
+    if cines['espacio_INCAA'].empty:
+        raw_data['espacio_INCAA'] = 0
+    else:
+        raw_data['espacio_INCAA'] = 1
+    raw_data['espacio_INCAA'] = cines['espacio_INCAA'].astype(int)
+    cines_tabla = raw_data.groupby(['Provincia']).agg({'Pantallas':[np.sum], 'Butacas':[np.sum], 'espacio_INCAA':[np.sum]})
+    cines_tabla = pd.DataFrame(cines_tabla)
+    return cines_tabla
+
+tabla_cines = analisis_datos_cines(cines)
 
 # Generación de tabla de registro de análisis por categoría
 total_registro_cat = pd.DataFrame(tabla_general.categoria.value_counts())
@@ -20,23 +61,3 @@ total_registro_cat = pd.DataFrame(tabla_general.categoria.value_counts())
 total_cat_prov = pd.DataFrame(tabla_general.groupby(['provincia', 'categoria']).count())
 total_cat_prov = pd.DataFrame(total_cat_prov.iloc[:,0])
 total_cat_prov.rename(columns={'cod_localidad':'por_cat_prov'}, inplace=True)
-
-# Generación de tabla de cines desde raw_data de url
-r = requests.get('https://datos.cultura.gob.ar/dataset/37305de4-3cce-4d4b-9d9a-fec3ca61d09f/resource/392ce1a8-ef11-4776-b280-6f1c7fae16ae/download/cine.csv')
-download = r.content.decode('utf-8')
-csv_file = csv.reader(download.splitlines(), delimiter=',')
-csv_creator = list(csv_file)
-raw_data = pd.DataFrame(csv_creator[1:], columns=csv_creator[0])
-
-# Modificación de valores de columnas para poder acumular
-raw_data['Pantallas'] = raw_data['Pantallas'].astype(int)
-raw_data['Butacas'] = raw_data['Butacas'].astype(int)
-if raw_data['espacio_INCAA'].empty:
-    raw_data['espacio_INCAA'] = 0
-else:
-     raw_data['espacio_INCAA'] = 1
-raw_data['espacio_INCAA'] = raw_data['espacio_INCAA'].astype(int)
-
-# Generación de tabla como data frame
-cines_tabla = raw_data.groupby(['Provincia']).agg({'Pantallas':[np.sum], 'Butacas':[np.sum], 'espacio_INCAA':[np.sum]})
-cines_tabla = pd.DataFrame(cines_tabla)
