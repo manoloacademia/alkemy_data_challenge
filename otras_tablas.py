@@ -33,7 +33,6 @@ def analisis_datos_cines(cines: pd.DataFrame):
         cines['espacio_INCAA'] = 1
     cines_tabla = cines.groupby(['Provincia']).agg({'Pantallas':[np.sum], 'Butacas':[np.sum], 'espacio_INCAA':[np.sum]})
     cines_tabla = pd.DataFrame(cines_tabla)
-    
     return cines_tabla
 
 tabla_cines = analisis_datos_cines(cines)
@@ -48,7 +47,6 @@ def tabla_categoria():
     lista.append((cines.Categoría.unique()[0], cines.Categoría.count()))
     lista.append((bibliotecas.Categoría.unique()[0], bibliotecas.Categoría.count()))
     df_cat = pd.DataFrame(lista, columns=['categoria', 'cuenta'])
-    
     return df_cat
 
 # Definir tabla por fuente
@@ -61,7 +59,6 @@ def tabla_fuente():
     lista.append((cines.Fuente.unique()[0], cines.Fuente.count()))
     lista.append((bibliotecas.Fuente.unique()[0], bibliotecas.Fuente.count()))
     df_fuente = pd.DataFrame(lista, columns=['fuente', 'cuenta'])
-    
     return df_fuente
 
 # Definir tabla por provincia y por categoría
@@ -88,7 +85,6 @@ def tabla_prov_cat():
     cines_df = cines_df.drop('Categoría', axis=1)
     bibliotecas_df = bibliotecas_df.drop('Categoría', axis=1)
     tabla_prov_cat = pd.concat([museos_df, cines_df, bibliotecas_df], axis=0)
-    
     return tabla_prov_cat
 
 if __name__ == '__main__':

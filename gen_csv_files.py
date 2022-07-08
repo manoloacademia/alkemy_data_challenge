@@ -152,15 +152,24 @@ def generar_csv(categoria: str):
     logging.info(f"Se crea archivo .csv con los datos-fuente de categoría {categoria}.")
     return csv_to_file
 
+# Generación de tabla de datos generales
+def gen_tabla_normalizada():
+    """ Esta función genera la tabla normalizada de valores conjuntos
+    de las 3 fuentes.    
+    """
+    museos = datos_museos(csv_datos_fuente()[0])
+    cines = datos_cines(csv_datos_fuente()[1])
+    bibliotecas = datos_bibliotecas(csv_datos_fuente()[2])
+    tabla_general = pd.concat([museos, cines, bibliotecas], axis=0, ignore_index=True)
+    gen_tabla = tabla_general.to_csv(os.path.join('data','tabla_general.csv'))
+    return gen_tabla
+
 if __name__ == '__main__':
     
-    # Definimos los data frames para cada categoría
-    #museos = csv_datos_fuente()[0]
-    #cines = csv_datos_fuente()[1]
-    #bibliotecas = csv_datos_fuente()[2]
-    
     # Se prueban los archivos generados
+    
     try:
+        gen_tabla_normalizada()
         generar_csv('museos')
         generar_csv('cines')
         generar_csv('bibliotecas')
@@ -168,7 +177,4 @@ if __name__ == '__main__':
     except:
         logging.warning('Los archivos ya se encuentran generados.')
 
-    # Generación de tabla de datos generales
-    #tabla_general = pd.concat([museos, cines, bibliotecas], axis=0, ignore_index=True)
-    # tabla_general = tabla_general.drop('Unnamed: 0', axis=1)
-    #tabla_general.to_csv('tabla_general.csv')
+    
