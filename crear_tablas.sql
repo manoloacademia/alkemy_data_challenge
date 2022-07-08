@@ -26,21 +26,24 @@ CREATE TABLE tabla_general (
     código_postal text,
     número_de_teléfono text,
     mail text,
-    web text
+    web text,
+    fecha_descarga text
 );
 
 -- Se crea tabla por categoria
 CREATE TABLE tabla_por_categoria (
     index bigint,
     categoria text,
-    cuent bigint
+    cuenta bigint,
+    fecha_descarga text
 );
 
 -- Se crea tabla por fuente
 CREATE TABLE tabla_por_fuente (
     index bigint,
     fuente text,
-    cuent bigint
+    cuenta bigint,
+    fecha_descarga text
 );
 
 -- Se crea tabla por provincia y categoria
@@ -48,7 +51,8 @@ CREATE TABLE tabla_por_provincia_categoria (
     index bigint,
     provincia text,
     categoria text,
-    cuent bigint
+    cuenta bigint,
+    fecha_descarga text
 );
 
 -- Se crea tabla de cines
@@ -57,6 +61,7 @@ CREATE TABLE tabla_cines (
     ('Provincia', '') text,
     ('Pantallas', 'sum') int,
     ('Butacas', 'sum') int,
-    ('espacio_INCAA', 'sum') int
+    ('espacio_INCAA', 'sum') int,
+    ('fecha_descarga', '') text
 );
 
