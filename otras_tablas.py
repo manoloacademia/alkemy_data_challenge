@@ -4,6 +4,10 @@ import locale
 import datetime
 from pathlib import Path
 import os
+import logging
+
+# Seteo de logging
+logging.basicConfig(level=logging.DEBUG, filename='datos_generados.log', filemode='a', format='%(asctime)s:%(levelname)s:%(message)s')
 
 from gen_csv_files import csv_datos_fuente
 
@@ -21,7 +25,7 @@ BASE_DIR = Path(os.path.abspath(os.path.dirname(__file__))).absolute()
 museos, cines, bibliotecas = csv_datos_fuente()
 
 # Modificación de valores de columnas para poder acumular en la tabla de datos generales para cines
-def analisis_datos_cines(cines: pd.DataFrame):
+def analisis_datos_cines() -> pd.DataFrame:
     """ Esta función permite realizar la tabla de análisis de cines así como el 
     recuento de las butacas, pantallas y los espacios INCAA.
     """
@@ -32,13 +36,12 @@ def analisis_datos_cines(cines: pd.DataFrame):
     else:
         cines['espacio_INCAA'] = 1
     cines_tabla = cines.groupby(['Provincia']).agg({'Pantallas':[np.sum], 'Butacas':[np.sum], 'espacio_INCAA':[np.sum]})
-    cines_tabla = pd.DataFrame(cines_tabla)
+    cines_tabla = pd.DataFrame(cines_tabla).reset_index()
+    logging.info("Se crea tabla de análisis de cines.")
     return cines_tabla
 
-tabla_cines = analisis_datos_cines(cines)
-
 # Definir tabla por categoría
-def tabla_categoria():
+def tabla_categoria() -> pd.DataFrame:
     """ Esta función realiza un Data Frame con la tabla de Cantidad
     de registros totales por Categoría.
     """
@@ -47,10 +50,11 @@ def tabla_categoria():
     lista.append((cines.Categoría.unique()[0], cines.Categoría.count()))
     lista.append((bibliotecas.Categoría.unique()[0], bibliotecas.Categoría.count()))
     df_cat = pd.DataFrame(lista, columns=['categoria', 'cuenta'])
+    logging.info("Se crea tabla de análisis por categoria.")
     return df_cat
 
 # Definir tabla por fuente
-def tabla_fuente():
+def tabla_fuente() -> pd.DataFrame:
     """ Esta función realiza un Data Frame con la tabla de Cantidad
     de registros totales por Categoría.
     """
@@ -59,10 +63,11 @@ def tabla_fuente():
     lista.append((cines.Fuente.unique()[0], cines.Fuente.count()))
     lista.append((bibliotecas.Fuente.unique()[0], bibliotecas.Fuente.count()))
     df_fuente = pd.DataFrame(lista, columns=['fuente', 'cuenta'])
+    logging.info("Se crea tabla de análisis por fuente.")
     return df_fuente
 
 # Definir tabla por provincia y por categoría
-def tabla_prov_cat():
+def tabla_prov_cat() -> pd.DataFrame:
     """ Esta función realiza un Data Frame con la cuenta de registros
     por provincia y por categoría.
     """
@@ -85,11 +90,16 @@ def tabla_prov_cat():
     cines_df = cines_df.drop('Categoría', axis=1)
     bibliotecas_df = bibliotecas_df.drop('Categoría', axis=1)
     tabla_prov_cat = pd.concat([museos_df, cines_df, bibliotecas_df], axis=0)
+    logging.info("Se crea tabla de análisis por provincia y categoría.")
     return tabla_prov_cat
 
 if __name__ == '__main__':
-    tabla_cines = analisis_datos_cines(cines)
-    por_categoria = tabla_categoria()
-    por_fuente = tabla_fuente()
-    tabla_provincia_categoría = tabla_prov_cat()
+    try:
+        analisis_datos_cines()
+        tabla_categoria()
+        tabla_fuente()
+        tabla_prov_cat()
+        logging.info("Se crean correctamente las tablas de análisis.")
+    except:
+        logging.warning("Chequear que se hayan importado correctamente los archivos csv.")
     

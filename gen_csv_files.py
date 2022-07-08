@@ -161,8 +161,8 @@ def gen_tabla_normalizada():
     cines = datos_cines(csv_datos_fuente()[1])
     bibliotecas = datos_bibliotecas(csv_datos_fuente()[2])
     tabla_general = pd.concat([museos, cines, bibliotecas], axis=0, ignore_index=True)
-    gen_tabla = tabla_general.to_csv(os.path.join('data','tabla_general.csv'))
-    return gen_tabla
+    tabla_general.to_csv(os.path.join('data','tabla_general.csv'))
+    return tabla_general
 
 if __name__ == '__main__':
     

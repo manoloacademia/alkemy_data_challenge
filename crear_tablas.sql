@@ -14,35 +14,49 @@ COMMENT ON DATABASE alkemy_data_analytics
     IS 'Se crea base de datos para Alkemy Challenge Data Analytics con Python';
 
 -- Se crea la tabla que contenga la información normalizada de Museos, Salas de Cine y Bibliotecas
-CREATE TABLE datos_generales (
-    id serial,
-    cod_localidad double precision,
-    id_departamento int,
-    categoria varchar(128),
-    provincia varchar(128),
-    localidad varchar(128),
-    nombre varchar(128),
-    domicilio varchar(128),
-    código_postal int,
-    número_de_teléfono double precision,
-    mail varchar(128),
-    web varchar(128)
+CREATE TABLE tabla_general (
+    index bigint,
+    cod_localidad text,
+    id_departamento text,
+    categoria text,
+    provincia text,
+    localidad text,
+    nombre text,
+    domicilio text,
+    código_postal text,
+    número_de_teléfono text,
+    mail text,
+    web text
 );
 
--- Se crea tabla de datos conjuntos
-CREATE TABLE datos_conjuntos (
-    id serial,
-    total_categorias int,
-    total_registro_fuente int,
-    total_registro_provincia int
+-- Se crea tabla por categoria
+CREATE TABLE tabla_por_categoria (
+    index bigint,
+    categoria text,
+    cuent bigint
+);
+
+-- Se crea tabla por fuente
+CREATE TABLE tabla_por_fuente (
+    index bigint,
+    fuente text,
+    cuent bigint
+);
+
+-- Se crea tabla por provincia y categoria
+CREATE TABLE tabla_por_provincia_categoria (
+    index bigint,
+    provincia text,
+    categoria text,
+    cuent bigint
 );
 
 -- Se crea tabla de cines
-CREATE TABLE cines (
-    id serial,
-    provincia varchar(128),
-    pantallas int,
-    butacas int,
-    catidad_INCAA int
+CREATE TABLE tabla_cines (
+    index bigint,
+    ('Provincia', '') text,
+    ('Pantallas', 'sum') int,
+    ('Butacas', 'sum') int,
+    ('espacio_INCAA', 'sum') int
 );
 
