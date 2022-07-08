@@ -1,6 +1,5 @@
-""" SQL Alchemy is a DB wrapper
-1- We need to create an engine
-2- We need to create a session
+""" Este archivo genera el motor de conexión
+con la base de datos de PostgreSQL.
 """
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
