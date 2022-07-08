@@ -1,3 +1,6 @@
+""" Este archivo genera las tablas de analisis de cines, análisis por categoría,
+análisis por fuente y por provincia que se cargarán en la base de datos.
+"""
 import pandas as pd
 import numpy as np
 import locale
