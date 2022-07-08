@@ -1,3 +1,6 @@
+""" En este archivo se importan las tablas generadas y se realiza
+la alimentación de las tablas de la base de datos.
+"""
 from sqlalchemy_conn import get_engine
 import pandas as pd
 import logging
