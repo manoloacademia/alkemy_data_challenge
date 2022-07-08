@@ -3,7 +3,6 @@ guardarlas en Data Frames de la librería Pandas y generar los archivos .csv en 
 corresponientes, con las columnas normalizadas.
 
 """
-
 # Importar librerías
 import pandas as pd
 import requests
@@ -13,7 +12,6 @@ import datetime
 import logging
 import os
 from pathlib import Path
-# from decouple import config
 
 # Seteo de logging
 logging.basicConfig(level=logging.DEBUG, filename='datos_generados.log', filemode='a', format='%(asctime)s:%(levelname)s:%(message)s')
@@ -167,7 +165,6 @@ def gen_tabla_normalizada():
 if __name__ == '__main__':
     
     # Se prueban los archivos generados
-    
     try:
         gen_tabla_normalizada()
         generar_csv('museos')
