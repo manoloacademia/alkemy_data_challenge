@@ -1,3 +1,9 @@
+""" Este archivo permite satisfacer los requerimientos del Alkemy Data Analytics + Python Challenge.
+En el mismo se busca la conexión con 3 fuentes de datos públicos argentinos y se generan archivos .csv 
+para analizar más en detalle la información.
+Este archivo también alimenta tablas de ese análisis a una base de datos PostgreSQL.
+"""
+# Importar las librerías necesarias
 import os
 import logging
 from decouple import config
@@ -61,4 +67,4 @@ if __name__ == '__main__':
         alimentar_db(tabla_prov_cat(), 'tabla_por_provincia_categoria', user, passwd, host, port, db)
         logging.info('Se crean las tablas correspondientes en la base de datos.')
     except Exception as e:
-        logging.warning(f'Revisar los datos de conexión: {e}.')
+        logging.warning(f'Revisar los datos de conexión a los archivos anteriores. Revisar excepción: {e}.')
