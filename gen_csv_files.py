@@ -133,27 +133,31 @@ def datos_bibliotecas(df_bibliotecas: pd.DataFrame):
 def generar_csv(categoria: str):
     """ Esta función recibe como parámetro la categoría de los datos-fuente
     y devuelve un archivo .csv con la información normalizada.
+        - Museos: categoria = 0
+        - Cines: categoria = 1
+        - Bibliotecas: categoria = 2
     """
     if categoria == 'museos':
-        df = datos_museos(museos)
-    if categoria == 'cines':
-        df = datos_cines(cines)
-    if categoria == 'bibliotecas':
-        df = datos_bibliotecas(bibliotecas)
+        index = 0
+    elif categoria == 'cines':
+        index = 1
+    elif categoria == 'bibliotecas':
+        index = 2
+    df = csv_datos_fuente()[index]
     dir_cat = os.path.join('data', categoria)
     dir_cat = os.path.join(BASE_DIR, dir_cat)
     dir_fecha = os.path.join(dir_cat, f'{ANIO_MES}')
     dir_cat_mes_anio = os.path.join(dir_fecha,f'{categoria}-{FECHA_DESCARGA}.csv')
     csv_to_file = df.to_csv(dir_cat_mes_anio)
-    logging.info("Se crea archivo .csv normalizado.")
+    logging.info(f"Se crea archivo .csv con los datos-fuente de categoría {categoria}.")
     return csv_to_file
 
 if __name__ == '__main__':
     
     # Definimos los data frames para cada categoría
-    museos = csv_datos_fuente()[0]
-    cines = csv_datos_fuente()[1]
-    bibliotecas = csv_datos_fuente()[2]
+    #museos = csv_datos_fuente()[0]
+    #cines = csv_datos_fuente()[1]
+    #bibliotecas = csv_datos_fuente()[2]
     
     # Se prueban los archivos generados
     try:
@@ -165,6 +169,6 @@ if __name__ == '__main__':
         logging.warning('Los archivos ya se encuentran generados.')
 
     # Generación de tabla de datos generales
-    tabla_general = pd.concat([museos, cines, bibliotecas], axis=0, ignore_index=True)
+    #tabla_general = pd.concat([museos, cines, bibliotecas], axis=0, ignore_index=True)
     # tabla_general = tabla_general.drop('Unnamed: 0', axis=1)
-    tabla_general.to_csv('tabla_general.csv')
+    #tabla_general.to_csv('tabla_general.csv')
