@@ -9,7 +9,7 @@ El logueo está grabado en el [archivo datos_generados.log](https://github.com/m
 ## Módulos de alimentación a archivo main.py
 El detalle de los módulos que alimentan al main se encuentra en los archivos presentes en la carpeta.
 
-## El `main.py` realiza las siguientes acciones
+### El `main.py` realiza las siguientes acciones
 - Descarga de los datos desde las 3 fuentes en archivos .csv.
 - Genera los directorios específicos para cada archivo de los datos-fuente.
 - Transforma los datos-fuente en las tablas generales con columnas normalizadas.
