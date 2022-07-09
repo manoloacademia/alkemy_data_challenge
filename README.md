@@ -2,7 +2,7 @@
 
 Este repo fue realizado para resolver el challenge adjunto: [Challenge_Data_Analytics_con_Python](https://github.com/manoloacademia/alkemy_data_challenge/blob/main/Challenge_Data_Analytics_con_Python.pdf).<br>
 Primero hay que crear e iniciarse en el entorno virtual con el comando: `python -m venv venv`.<br>
-Luego, es necesario instalar las dependencias para la ejecución correcta: `pip -r install requirements.txt`.<br>
+Luego, es necesario instalar las dependencias para la ejecución correcta: `pip install -r requirements.txt`.<br>
 Una vez ya instalado, para correr el programa es necesario ejecutar el **Main**: `python main.py`.<br>
 El logueo está grabado en el [archivo datos_generados.log](https://github.com/manoloacademia/alkemy_data_challenge/blob/main/datos_generados.log).
 
